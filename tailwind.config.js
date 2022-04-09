@@ -4,7 +4,16 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        typewritter: {
+          'to': {left: '100%'}
+        }
+      },
+      animation: {
+        typewritter: 'typewriter 3s ease infinite',
+      }
+    },
   },
   plugins: [],
 }
