@@ -1,45 +1,42 @@
-import type { NextComponentType } from "next";
+import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import Delay from "../utils/delay";
 
-const TypeWriter: NextComponentType = () => {
-  const title: Array<String> = "Sahil Deshmukh".split("");
+const TypeWriter: NextPage<{ text: string }> = (props) => {
+  const { text } = props;
+  const title: Array<String> = text.split("");
   const [word, setWord] = useState<Array<String>>([]);
-  const [repeatCount, setRepeatCount] = useState(false);
+
+  const runAnimation = async (str: String) => {
+    await Delay(1000);
+
+    for (let i = 0; i < title.length; i++) {
+      await Delay(250);
+      setWord((prev) => [...prev, title.at(i) || ""]);
+    }
+
+    await erase();
+  };
+
+  const erase = async () => {
+    await Delay(1000);
+
+    for (let i = title.length - 1; i >= 0; i--) {
+      await Delay(100);
+      setWord((prev) => [...prev.slice(0, i)]);
+    }
+
+    await runAnimation("");
+  };
 
   useEffect(() => {
-    title.forEach((value, index) => {
-      setTimeout(() => {
-        setWord((prev) => [...prev, value]);
-
-        if (index === title.length - 1) {
-          console.log(word);
-
-          erase();
-          // setRepeatCount(repeatCount + 1);
-        }
-      }, index * 250);
-    });
+    runAnimation("123");
+    return () => {};
   }, []);
-
-  const erase = () => {
-    title.forEach((_, index) => {
-      setTimeout(() => {
-        // const less = word;
-        // less.pop();
-        console.log(word);
-
-        // setWord(less);
-
-        if (index === title.length - 1) {
-          // setRepeatCount(repeatCount + 1);
-        }
-      }, index * 250);
-    });
-  };
 
   return (
     <div>
-      {word?.map((value, index) => (
+      {word.map((value, index) => (
         <span key={index}>{value}</span>
       ))}
     </div>

@@ -23,9 +23,9 @@ const Home: NextPage = () => {
         ></link>
       </Head>
 
-      <main className="relative grid h-screen place-content-center bg-gray-800 font-poppins">
-        <h1 className="relative text-5xl font-bold text-gray-300 sm:text-7xl">
-          <TypeWriter />
+      <main className="bkg relative grid h-screen place-content-center font-poppins">
+        <h1 className="relative text-4xl font-bold text-gray-300 sm:text-7xl">
+          <TypeWriter text="Sahil Deshmukh" />
         </h1>
       </main>
 
