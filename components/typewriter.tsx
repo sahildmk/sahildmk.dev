@@ -1,27 +1,17 @@
-import type { NextComponentType } from "next";
-import { useEffect, useRef, useState } from "react";
+import type { NextPage } from "next";
+import { useEffect, useState } from "react";
+import Delay from "../utils/delay";
 
-const TypeWriter: NextComponentType = () => {
-  const title: Array<String> = "Sahil Deshmukh".split("");
+const TypeWriter: NextPage<{ text: string }> = (props) => {
+  const { text } = props;
+  const title: Array<String> = text.split("");
   const [word, setWord] = useState<Array<String>>([]);
-  const wordRef = useRef<Array<String>>([]);
-  wordRef.current = word;
-  const [reverse, setReverse] = useState(false);
-  const index = useRef(0);
-
-  const delay = (time: number) => {
-    return new Promise<void>((resolve, _) => {
-      setTimeout(() => {
-        resolve();
-      }, time);
-    });
-  };
 
   const runAnimation = async (str: String) => {
-    await delay(1000);
+    await Delay(1000);
 
     for (let i = 0; i < title.length; i++) {
-      await delay(250);
+      await Delay(250);
       setWord((prev) => [...prev, title.at(i) || ""]);
     }
 
@@ -29,10 +19,10 @@ const TypeWriter: NextComponentType = () => {
   };
 
   const erase = async () => {
-    await delay(1000);
+    await Delay(1000);
 
     for (let i = title.length - 1; i >= 0; i--) {
-      await delay(100);
+      await Delay(100);
       setWord((prev) => [...prev.slice(0, i)]);
     }
 

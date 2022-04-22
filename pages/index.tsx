@@ -25,7 +25,7 @@ const Home: NextPage = () => {
 
       <main className="bkg relative grid h-screen place-content-center font-poppins">
         <h1 className="relative text-4xl font-bold text-gray-300 sm:text-7xl">
-          <TypeWriter />
+          <TypeWriter text="Sahil Deshmukh" />
         </h1>
       </main>
 
