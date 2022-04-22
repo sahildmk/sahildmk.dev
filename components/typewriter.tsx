@@ -18,6 +18,8 @@ const TypeWriter: NextComponentType = () => {
   };
 
   const runAnimation = async (str: String) => {
+    await delay(1000);
+
     for (let i = 0; i < title.length; i++) {
       await delay(250);
       setWord((prev) => [...prev, title.at(i) || ""]);
