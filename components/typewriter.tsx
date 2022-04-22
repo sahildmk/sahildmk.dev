@@ -1,45 +1,50 @@
 import type { NextComponentType } from "next";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const TypeWriter: NextComponentType = () => {
   const title: Array<String> = "Sahil Deshmukh".split("");
   const [word, setWord] = useState<Array<String>>([]);
-  const [repeatCount, setRepeatCount] = useState(false);
+  const wordRef = useRef<Array<String>>([]);
+  wordRef.current = word;
+  const [reverse, setReverse] = useState(false);
+  const index = useRef(0);
 
-  useEffect(() => {
-    title.forEach((value, index) => {
+  const delay = (time: number) => {
+    return new Promise<void>((resolve, _) => {
       setTimeout(() => {
-        setWord((prev) => [...prev, value]);
-
-        if (index === title.length - 1) {
-          console.log(word);
-
-          erase();
-          // setRepeatCount(repeatCount + 1);
-        }
-      }, index * 250);
-    });
-  }, []);
-
-  const erase = () => {
-    title.forEach((_, index) => {
-      setTimeout(() => {
-        // const less = word;
-        // less.pop();
-        console.log(word);
-
-        // setWord(less);
-
-        if (index === title.length - 1) {
-          // setRepeatCount(repeatCount + 1);
-        }
-      }, index * 250);
+        resolve();
+      }, time);
     });
   };
 
+  const runAnimation = async (str: String) => {
+    for (let i = 0; i < title.length; i++) {
+      await delay(250);
+      setWord((prev) => [...prev, title.at(i) || ""]);
+    }
+
+    await erase();
+  };
+
+  const erase = async () => {
+    await delay(1000);
+
+    for (let i = title.length - 1; i >= 0; i--) {
+      await delay(100);
+      setWord((prev) => [...prev.slice(0, i)]);
+    }
+
+    await runAnimation("");
+  };
+
+  useEffect(() => {
+    runAnimation("123");
+    return () => {};
+  }, []);
+
   return (
     <div>
-      {word?.map((value, index) => (
+      {word.map((value, index) => (
         <span key={index}>{value}</span>
       ))}
     </div>
