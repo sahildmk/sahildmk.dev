@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import Card from "../components/card";
 import TypeWriter from "../components/typewriter";
 // import Image from 'next/image'
 
@@ -23,10 +23,16 @@ const Home: NextPage = () => {
         ></link>
       </Head>
 
-      <main className="bkg relative grid h-screen place-content-center font-poppins">
-        <h1 className="relative text-4xl font-bold text-gray-300 sm:text-7xl">
-          <TypeWriter text="Sahil Deshmukh" />
-        </h1>
+      <main className="bkg relative flex h-screen flex-col items-center font-poppins text-gray-300">
+        <section className=" mt-44">
+          <h1 className="relative text-4xl font-bold sm:text-7xl">
+            {/* <TypeWriter text="Sahil Deshmukh" /> */}
+            Sahil Deshmukh
+          </h1>
+        </section>
+        <section>
+          <Card />
+        </section>
       </main>
 
       <footer></footer>
