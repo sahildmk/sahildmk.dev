@@ -1,15 +1,19 @@
-import { NextPage } from "next";
+import { Button, ButtonType } from "./buttons";
 
-const Card: NextPage = () => {
+const Card = () => {
   return (
-    <div className="mt-10 flex w-72 flex-col rounded-lg bg-gray-200 text-black">
-      <section className="w-full rounded-t-lg bg-slate-500">
-        Image Placeholder
-      </section>
-      <section className="p-3">
-        <h2 className="text-2xl">Project Title</h2>
-        <button type="button">Primary</button>
-        <button type="button">Secondary</button>
+    <div className="card">
+      <section className="h-72 w-full rounded-t-lg bg-slate-500"></section>
+      <section className="p-5">
+        <h2 className="mb-2 text-xl font-semibold">Project Title</h2>
+        <Button
+          type={ButtonType.primary}
+          onClick={() => {
+            console.log("Primary");
+          }}
+        >
+          Primary
+        </Button>
       </section>
     </div>
   );
