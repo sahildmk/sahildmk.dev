@@ -7,14 +7,6 @@ module.exports = {
     extend: {
       fontFamily: {
         'poppins': ['"Poppins"', 'sans-serif']
-      },
-      keyframes: {
-        typewritter: {
-          'to': {left: '100%'}
-        }
-      },
-      animation: {
-        typewritter: 'typewriter 3s ease infinite',
       }
     },
   },

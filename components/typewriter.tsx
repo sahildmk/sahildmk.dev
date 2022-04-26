@@ -35,7 +35,7 @@ const TypeWriter: NextPage<{ text: string }> = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="h-20">
       {word.map((value, index) => (
         <span key={index}>{value}</span>
       ))}
