@@ -4,7 +4,7 @@ export enum ButtonType {
   default = "default",
   primary = "primary",
   secondary = "secondary",
-  success = "sucess",
+  success = "success",
   danger = "danger",
 }
 

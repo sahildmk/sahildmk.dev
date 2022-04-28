@@ -4,3 +4,20 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.typewriter:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -0.7rem;
+  bottom: 0;
+  width: 0.1em;
+  background-color: rgb(209 213 219);
+  animation: blink 700ms steps(2) infinite;
+}
+
+@keyframes blink {
+  to {
+    background: transparent;
+  }
+}

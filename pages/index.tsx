@@ -26,12 +26,19 @@ const Home: NextPage = () => {
       <main className="bkg relative flex h-screen flex-col items-center font-poppins text-gray-300">
         <section className=" mt-44">
           <h1 className="relative text-4xl font-bold sm:text-7xl">
-            <TypeWriter text="Sahil Deshmukh" />
+            <TypeWriter
+              words={[
+                "Sahil Deshmukh",
+                "Developer",
+                "Problem Solver",
+                "Creative Thinker",
+              ]}
+            />
             {/* Sahil Deshmukh */}
           </h1>
         </section>
         <section>
-          <Card />
+          <Card title={"Project"} />
         </section>
       </main>
 
